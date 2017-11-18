@@ -1,0 +1,64 @@
+<h1>Patrol Portal</h1>
+<p>This is our website, go ahead check it out</p>
+<% if volunteer_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_volunteer_session_path, method: :get) %>        
+  </li>
+  
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+  $(function() {
+    var availableTags = <%= raw json_escape(@pol.to_json) %>;
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  
+  </script>
+
+   
+ <div class="ui-widget">
+  <label for="tags">Location: </label>
+  <input id="tags">
+
+</div>
+
+
+<a href="#" onclick="window.location.href = '/volunteers/'+$( '#tags' ).val()">Text</a>
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pol.each do |user| %>
+      <tr>
+        <td><%= user %></td>
+        
+        <td><%= link_to 'Show', showv_path(user) , { :class=>"btn btn-danger" }%></td>
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table> 
+
+
+
+
+  
+<% else %>
+  <li>
+  <%= link_to('Login', new_volunteer_session_path)  %>  
+  </li>
+<% end %>
