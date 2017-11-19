@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  
+  get 'crim/:locality' => 'crimes#loc', :as => :showl
+  resources :crimes
   devise_for :volunteers, :controllers => {registrations: 'registrations'}
-   
+
  get 'volunteers/:police_station' => 'volunteers#sp', :as => :showv
   get 'volunteers/index1' => 'volunteers#index1'
    get 'volun/:name' => 'volunteers#nam', :as => :shown
+   get 'voluni/:category' => 'volunteers#cat', :as => :showc
    resources :volunteers 
    
    root 'volunteers#index1'

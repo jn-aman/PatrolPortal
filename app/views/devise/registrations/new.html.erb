@@ -1,6 +1,11 @@
+<body class="aman">
 <center>
+<%=stylesheet_link_tag "dev"%>
 
-<h2>Sign up</h2>
+<br><br>
+
+
+<h2>Sign up!</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -48,10 +53,14 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+<br>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
+<br>
 <%= render "devise/shared/links" %>
+<br>
+<%= link_to "Back", root_path,{ :class=>"btn btn-danger" } %>
+</body>

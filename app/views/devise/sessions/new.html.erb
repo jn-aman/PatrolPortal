@@ -1,13 +1,22 @@
+<body class="aman">
 <center>
+<%=stylesheet_link_tag "dev"%>
 
-<h2>Log in</h2>
+<br><br>
+<br>
 
+
+
+<h2>Login!</h2>
+
+
+<br>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="login-form">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
-
+<br>
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %>
@@ -24,5 +33,8 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
+<br>
 <%= render "devise/shared/links" %>
+<br>
+<%= link_to "Back", root_path,{ :class=>"btn btn-danger" } %>
+</body>

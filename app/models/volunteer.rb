@@ -26,7 +26,7 @@ class Volunteer < ActiveRecord::Base
 def self.unique_policestations
 		stations = []
 		Volunteer.all.each do |vol|
-			stations.push(vol.police_station.capitalize)
+			stations.push(vol.police_station.titleize)
 		end
 		stations.delete("")
 		return stations.uniq
@@ -35,11 +35,23 @@ def self.unique_policestations
 def self.unique_name
 		n = []
 		Volunteer.all.each do |vol|
-			n.push(vol.name.capitalize)
+			n.push(vol.name.titleize)
 		end
 		n.delete("")
 		return n.uniq
 	end
+
+
+def self.unique_cat
+		n = []
+		Volunteer.all.each do |vol|
+			n.push(vol.category.titleize)
+		end
+		n.delete("")
+		return n.uniq
+	end
+
+
 
 end
 

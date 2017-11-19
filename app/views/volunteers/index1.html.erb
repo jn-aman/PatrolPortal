@@ -11,9 +11,9 @@
     
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
-    <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.min.css"> 
+    <!-- <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.min.css"> 
     <link rel="stylesheet" href="css/bootstrap.min.css">                       
-    <link rel="stylesheet" href="css/templatemo-style.css">                    
+    <link rel="stylesheet" href="css/templatemo-style.css">  -->                   
 
    
 </head>
@@ -39,6 +39,19 @@
   $(function() {
     var availableTags = <%= raw json_escape(@name.to_json) %>;
     $( "#contact_namess" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  
+  $(function() {
+    var availableTags = <%= raw json_escape(@cat.to_json) %>;
+    $( "#contact_namesss" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  $(function() {
+    var availableTags = <%= raw json_escape(@loc.to_json) %>;
+    $( "#contact_namessss" ).autocomplete({
       source: availableTags
     });
   } );
@@ -152,16 +165,10 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-2-col-text">
                         <h2 class="tm-2-col-text-title">Report a crime</h2>
                        
-                        <form action="index.html" method="post" class="tm-contact-form">       
-                            <div class="form-group">
-                                <input type="text" id="contact_names" name="contact_names" class="form-control" placeholder="Location"  required/>
-                            </div>
-                            <div class="form-group">
-                                <textarea id="contact_message" name="contact_message" class="form-control" rows="6" placeholder="Crime Description attach photo" required></textarea>
-                            </div>
-                        </form>   
-            
-                        <a href="#" class="tm-bordered-btn">Report</a>
+                        <br>
+                        <br>
+                        
+                        <%= link_to 'Report', new_crime_path , { :class=>"tm-bordered-btn" }%>
                     </div>
                     
                 </section>
@@ -237,8 +244,9 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-2-col-text">
-                        <h2 class="tm-2-col-text-title">View your team:</h2> 
-                        <a href="#" class="tm-bordered-btn">Show</a>
+                        <h2 class="tm-2-col-text-title">View your Team:</h2> 
+                        <input type="text" id="contact_namesss" name="contact_namesss" class="form-control" placeholder="Category"  required/><br>
+ <a href="#" class="tm-bordered-btn" onclick="window.location.href = '/voluni/'+$( '#contact_namesss' ).val()">Show</a>
                     </div>
                     
                 </section>
@@ -277,8 +285,9 @@
 
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-2-col-text">
                         <h2 class="tm-2-col-text-title">View crimes in your locality:</h2>
-
-                        <a href="#" class="tm-bordered-btn">Show</a>
+<input type="text" id="contact_namessss" name="contact_namessss" class="form-control" placeholder="Locality"  required/><br>
+ <a href="#" class="tm-bordered-btn" onclick="window.location.href = '/crim/'+$( '#contact_namessss' ).val()">Show</a>
+                        
                     </div>
                     
                 </section>
@@ -296,7 +305,8 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-2-col-text">
                         <h2 class="tm-2-col-text-title">View all crimes (The super hero mode):</h2>
 
-                        <a href="#" class="tm-bordered-btn">Show</a>
+                       
+                        <%= link_to 'Show', crimes_path , { :class=>"tm-bordered-btn" }%>
                     </div>
                     
                 </section>

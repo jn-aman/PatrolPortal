@@ -1,0 +1,73 @@
+<style>
+
+
+{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+ 
+td,th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+ tr:hover {background-color: #ddd;}
+
+ th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: LightSkyBlue;
+    color: white;
+}
+.tm-btn-white-big1 {
+    font-size: 1.5rem;
+    color: white;
+    background-color: LightSkyBlue;
+    padding: 0.5rem 2.5rem;
+    border-radius: 0.5rem;
+}
+</style>
+<center>
+  
+<p id="notice"><%= notice %></p>
+
+
+<h1>Listing Crimes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Locality</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @crimes.each do |crime| %>
+      <tr>
+        <td><%= crime.Type %></td>
+        <td><%= crime.Locality %></td>
+        <td><%= crime.Description %></td>
+        <td><%= link_to 'Show', crime %></td>
+
+        <% if volunteer_signed_in? %>
+        <td><%= link_to 'Edit', edit_crime_path(crime) %></td>
+        <td><%= link_to 'Destroy', crime, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Crime', new_crime_path,{ :class=>"tm-btn-white-big1" }  %>
+<%= link_to 'Back', root_path,{ :class=>"tm-btn-white-big1" }  %>

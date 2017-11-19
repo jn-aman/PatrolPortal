@@ -1,0 +1,29 @@
+
+<center>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @crime.Type %>
+</p>
+
+<p>
+  <strong>Locality:</strong>
+  <%= @crime.Locality %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @crime.Description %>
+</p>
+<p>
+  <strong>Photo:</strong>
+  <%= image_tag @crime.avatar.url %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_crime_path(@crime) %> |
+<%= link_to 'Back', crimes_path %> |
+<%= link_to 'Back to Homepage', root_path %>
+</center>

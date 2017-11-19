@@ -1,4 +1,9 @@
+<body class="aman">
 <center>
+<%=stylesheet_link_tag "dev"%>
+
+<br><br>
+<br>
 
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
@@ -42,4 +47,6 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<br>
+<%= link_to "Back", root_path,{ :class=>"btn btn-danger" } %>
+</body>

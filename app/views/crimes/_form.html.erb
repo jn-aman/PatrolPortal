@@ -1,0 +1,53 @@
+<body class="aman">
+<center>
+<%=stylesheet_link_tag "dev"%>
+<script type="text/javascript">
+    $(function() {
+    var availableTags = <%= raw json_escape(Crime.unique_loc.to_json) %>;
+    $( "#addresspicker_map" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  
+
+</script>
+<br><br>
+<br>
+
+<%= form_for(@crime) do |f| %>
+  <% if @crime.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crime.errors.count, "error") %> prohibited this crime from being saved:</h2>
+
+      <ul>
+      <% @crime.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Type %><br>
+    <%= f.text_field :Type %>
+  </div>
+  <div class="field">
+    <%= f.label :Locality %><br>
+    <%= f.text_field :Locality ,:id => "addresspicker_map"%>
+  </div>
+  <div class="field">
+    <%= f.label :Description %><br>
+    <%= f.text_area :Description %>
+  </div>
+
+    <br>
+    <%= f.file_field :avatar %>
+  
+<br>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+</body>
