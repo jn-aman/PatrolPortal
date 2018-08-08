@@ -45,9 +45,27 @@
   
 <br>
 
+<div id="my_camera"></div>
+
+  <input type=button value="Take Snapshot" onClick="take_snapshot()">
+
+  <div class="field">
+    <%= f.hidden_field :image %>
+    <%= f.label :image %>: <br />
+    <div id="results">Your captured image will appear here...</div>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
 
 </body>

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require webcam.min
 //= require tether
 //= require wow
+//= require_tree .

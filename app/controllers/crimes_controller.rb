@@ -75,6 +75,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def crime_params
-      params.require(:crime).permit(:Type, :Locality, :Description,:avatar)
+      params.require(:crime).permit(:Type, :Locality, :Description,:avatar,:image)
     end
 end

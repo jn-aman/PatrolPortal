@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118180937) do
+ActiveRecord::Schema.define(version: 20180807072229) do
 
   create_table "crimes", force: :cascade do |t|
     t.string   "Type",                limit: 255
@@ -23,11 +23,7 @@ ActiveRecord::Schema.define(version: 20171118180937) do
     t.string   "avatar_content_type", limit: 255
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
-  end
-
-  create_table "spo", id: false, force: :cascade do |t|
-    t.string "name",          limit: 255
-    t.string "mobile_number", limit: 255
+    t.string   "image",               limit: 255
   end
 
   create_table "volunteers", force: :cascade do |t|
@@ -48,8 +44,13 @@ ActiveRecord::Schema.define(version: 20171118180937) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
   end
 
+  add_index "volunteers", ["confirmation_token"], name: "index_volunteers_on_confirmation_token", unique: true, using: :btree
   add_index "volunteers", ["email"], name: "index_volunteers_on_email", unique: true, using: :btree
   add_index "volunteers", ["reset_password_token"], name: "index_volunteers_on_reset_password_token", unique: true, using: :btree
 
