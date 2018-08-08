@@ -1,4 +1,4 @@
-function take_snapshot(){
+function takesnapshot(){
     Webcam.snap(function(data_uri) {
         id = $('[id*="_image"]');
 
@@ -8,7 +8,7 @@ function take_snapshot(){
 
         document.getElementById('results').innerHTML = '<img src="' + data_uri + '"/>';
     });
-}
+return false;}
 $(document).ready(function() {
     if ($("#my_camera").length) {
         Webcam.set({

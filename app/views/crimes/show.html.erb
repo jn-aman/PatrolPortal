@@ -17,11 +17,11 @@
   <%= @crime.Description %>
 </p>
 <p>
-  <strong>Photo:</strong>
-  <%= image_tag @crime.avatar.url %>
+  <strong>Crime Scene:</strong>
+  <%= image_tag @crime.avatar.url(:medium) %>
 </p>
 
-  <strong>Photo:</strong>
+  <strong>Reporter:</strong>
   <%= image_tag @crime.image %>
 </p>
 

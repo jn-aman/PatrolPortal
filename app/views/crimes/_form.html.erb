@@ -9,12 +9,34 @@
     });
   } );
   
+function takesnapshot(){
+    Webcam.snap(function(data_uri) {
+        id = $('[id*="_image"]');
 
+        if (id.length) {
+            id.val(data_uri);
+        }
+
+        document.getElementById('results').innerHTML = '<img src="' + data_uri + '"/>';
+    });
+return false;}
+$(document).ready(function() {
+    if ($("#my_camera").length) {
+        Webcam.set({
+            width: 320,
+            height: 240,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+
+        Webcam.attach('#my_camera');
+    }
+});
 </script>
 <br><br>
 <br>
 
-<%= form_for(@crime) do |f| %>
+<%= form_for(@crime ,html: {:onclick => "return takesnapshot();"} )do |f| %>
   <% if @crime.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@crime.errors.count, "error") %> prohibited this crime from being saved:</h2>
@@ -47,16 +69,16 @@
 
 <div id="my_camera"></div>
 
-  <input type=button value="Take Snapshot" onClick="take_snapshot()">
+  <!-- <input type=button value="Take Snapshot" onClick="takesnapshot()"> -->
 
   <div class="field">
     <%= f.hidden_field :image %>
     <%= f.label :image %>: <br />
-    <div id="results">Your captured image will appear here...</div>
+    <!-- <div id="results">Your captured image will appear here...</div> -->
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit%>
   </div>
 <% end %>
 
